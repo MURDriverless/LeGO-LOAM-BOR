@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
     rosbag::View view(bag, rosbag::TopicQuery(topics));
 
     auto start_real_time = std::chrono::high_resolution_clock::now();
-    auto start_sim_time = view.getBeginTime();
+    auto start_sim_time = ros::Time::now();
 
     auto prev_real_time = start_real_time;
     auto prev_sim_time = start_sim_time;

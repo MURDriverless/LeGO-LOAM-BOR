@@ -1182,7 +1182,7 @@ void FeatureAssociation::publishOdometry() {
   geometry_msgs::Quaternion geoQuat = tf::createQuaternionMsgFromRollPitchYaw(
       transformSum[2], -transformSum[0], -transformSum[1]);
 
-  laserOdometry.header.stamp = cloudHeader.stamp;
+  laserOdometry.header.stamp = ros::Time::now(); //cloudHeader.stamp;
   laserOdometry.pose.pose.orientation.x = -geoQuat.y;
   laserOdometry.pose.pose.orientation.y = -geoQuat.z;
   laserOdometry.pose.pose.orientation.z = geoQuat.x;
@@ -1285,7 +1285,7 @@ void FeatureAssociation::runFeatureAssociation() {
     segInfo = std::move(projection.seg_msg);
 
     cloudHeader = segInfo.header;
-    timeScanCur = cloudHeader.stamp.toSec();
+    timeScanCur = ros::Time::now().toSec(); // cloudHeader.stamp.toSec()?
 
     /**  1. Feature Extraction  */
     adjustDistortion();
