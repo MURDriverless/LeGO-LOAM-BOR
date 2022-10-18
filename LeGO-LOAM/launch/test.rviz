@@ -7,7 +7,7 @@ Panels:
         - /Map Cloud1/Autocompute Value Bounds1
         - /Odometry1/Shape1
       Splitter Ratio: 0.6416666507720947
-    Tree Height: 574
+    Tree Height: 358
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -120,8 +120,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 21.747316360473633
-        Min Value: -1.8050339221954346
+        Max Value: 18.23969078063965
+        Min Value: -5.0511274337768555
         Value: true
       Axis: Y
       Channel Name: intensity
@@ -228,9 +228,9 @@ Visualization Manager:
     - Class: rviz/MarkerArray
       Enabled: true
       Marker Topic: /rviz_cones
-      Name: MarkerArray
+      Name: Cones
       Namespaces:
-        {}
+        "": true
       Queue Size: 100
       Value: true
     - Class: rviz/Image
@@ -272,25 +272,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 33.994747161865234
+      Distance: 31.161327362060547
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.05186919867992401
-        Y: 0.07529151439666748
-        Z: 1.0939563253486995e-5
+        X: -0.054500699043273926
+        Y: -0.09505939483642578
+        Z: 9.793455319595523e-6
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 1.23979651927948
       Target Frame: map
       Value: XYOrbit (rviz)
-      Yaw: 3.3967928886413574
+      Yaw: 3.0767886638641357
     Saved:
       - Class: rviz/XYOrbit
         Distance: 34.785499572753906

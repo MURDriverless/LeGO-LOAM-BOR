@@ -1,0 +1,30 @@
+<launch>
+    
+    <!-- - Sim Time -->
+    <param name="/use_sim_time" value="true" />
+
+    <!--- Run Rviz-->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find lego_loam_bor)/launch/test.rviz" />
+
+    <!--- TF -->
+    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map"  args=" 0 0 0  0.4737  0.4737  0.525  0.525   /map /camera_init  100" />
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera" args=" 0 0 0  0.4737  0.4737  0.525  -0.525  /camera /base_link 100" />
+    <node pkg="tf" type="static_transform_publisher" name="husky_to_base_link"  args="-0.65 0 0.045  0 0 0                   /base_link /husky 100" />
+    <node pkg="tf" type="static_transform_publisher" name="basler_to_wld_ori"  args=" 0 0 0 0.5 -0.5  0.5  -0.5               /wld_ori /basler  100" />
+    <node pkg="tf" type="static_transform_publisher" name="wld_ori_to_husky"  args="-0.57 0.121 0.43  0 0 0                  /husky /wld_ori  100" />
+
+    <!--- LeGO-LOAM -->    
+    <arg name="rosbag"  default=""/>
+    <arg name="lidar_topic" default="/ouster/points"/>
+    <arg name="imu_topic" default="none"/>
+
+    <rosparam file="$(find lego_loam_bor)/config/loam_config.yaml" command="load"/>
+
+    <node pkg="lego_loam_bor" type="lego_loam_bor"    name="lego_loam_bor"    output="screen" >
+       <remap from="/lidar_points" to="$(arg lidar_topic)"/>
+       <remap from="/imu/data" to="$(arg imu_topic)"/>
+       <param name="rosbag"      value="$(arg rosbag)" type="string" />
+       <param name="lidar_topic" value="$(arg lidar_topic)" type="string" />
+    </node>
+
+</launch>
